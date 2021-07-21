@@ -10,6 +10,7 @@ setuptools.setup(
     author_email="gvedichi@gmail.com",
     description="Implementing standard JavaScript iterable objects methods for python iterable objects",
     long_description=github_readme,
+    long_description_content_type="text/markdown",
     url="https://github.com/Theodikes/jsmethods",
     install_requires=[],
     packages=setuptools.find_packages(),
