@@ -1,6 +1,7 @@
 import setuptools
 
-github_readme = ''
+with open("README.md", "r") as readme_file:
+    github_readme = readme_file.read()
 
 setuptools.setup(
     name="jsmethods",
