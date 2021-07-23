@@ -1,9 +1,12 @@
 import functools
+from typing import Callable, List, Any, Optional, Union, cast
 
 from .utils import get_function_positional_arguments_count
 
+inf = cast(int, float("inf"))
 
-def map_method(self, function):
+
+def map_method(self: List, function: Callable) -> List:
     mapping_function_arguments_count = get_function_positional_arguments_count(function)
 
     if mapping_function_arguments_count == 0 or mapping_function_arguments_count > 3:
@@ -17,7 +20,7 @@ def map_method(self, function):
         return [function(el, i, self) for i, el in enumerate(self)]
 
 
-def filter_method(self, function):
+def filter_method(self: List, function: Callable) -> List:
     filter_function_arguments_count = get_function_positional_arguments_count(function)
 
     if filter_function_arguments_count == 0 or filter_function_arguments_count > 3:
@@ -31,7 +34,7 @@ def filter_method(self, function):
         return [function(el, i, self) for i, el in enumerate(self)]
 
 
-def foreach_method(self, function):
+def foreach_method(self: List, function: Callable) -> None:
     foreach_function_arguments_count = get_function_positional_arguments_count(function)
 
     if foreach_function_arguments_count == 0 or foreach_function_arguments_count > 3:
@@ -50,7 +53,7 @@ def foreach_method(self, function):
     return None
 
 
-def find_method(self, function):
+def find_method(self: List, function: Callable) -> Any:
     find_function_arguments_count = get_function_positional_arguments_count(function)
 
     if find_function_arguments_count == 0 or find_function_arguments_count > 3:
@@ -76,7 +79,7 @@ def find_method(self, function):
     return None
 
 
-def find_index_method(self, function):
+def find_index_method(self: List, function: Callable) -> int:
     find_index_function_arguments_count = get_function_positional_arguments_count(function)
 
     if find_index_function_arguments_count not in (2, 3):
@@ -97,7 +100,7 @@ def find_index_method(self, function):
     return -1
 
 
-def some_method(self, function):
+def some_method(self: List, function: Callable) -> bool:
     some_method_function_arguments_count = get_function_positional_arguments_count(function)
 
     if some_method_function_arguments_count == 0 or some_method_function_arguments_count > 3:
@@ -123,7 +126,7 @@ def some_method(self, function):
     return False
 
 
-def every_method(self, function):
+def every_method(self: List, function: Callable) -> bool:
     every_method_function_arguments_count = get_function_positional_arguments_count(function)
 
     if every_method_function_arguments_count == 0 or every_method_function_arguments_count > 3:
@@ -149,7 +152,7 @@ def every_method(self, function):
     return True
 
 
-def flat_method(self, depth=1):
+def flat_method(self: List, depth: Union[int, inf] = 1) -> List:
     flatten = []
 
     def flat(arr, flat_depth):
@@ -164,7 +167,7 @@ def flat_method(self, depth=1):
     return flatten
 
 
-def join_method(self, delimiter, cast_types=False):
+def join_method(self: List, delimiter: str, cast_types: bool = False) -> str:
     """
     Since JavaScript has automatic typecasting to a string and it usually works correctly, but Python does not have such
     functionality, I decided to add an additional parameter that determines whether all array elements will be cast
@@ -178,12 +181,63 @@ def join_method(self, delimiter, cast_types=False):
     return delimiter.join(self)
 
 
-def reversed_method(self):
+def reversed_method(self: List) -> List:
     return self[::-1]
 
 
-def reduce_method(self, function, initial_value=None):
+def reduce_method(self: List, function: Callable, initial_value: Any = None) -> Any:
     if initial_value:
         return functools.reduce(function, self, initial_value)
 
     return functools.reduce(function, self)
+
+
+def reduce_right_method(self: List, function: Callable, initial_value: Any = None) -> Any:
+    if initial_value:
+        return functools.reduce(function, self[::-1], initial_value)
+
+    return functools.reduce(function, self[::-1])
+
+
+def concat_method(self: List, *args: List) -> List:
+    concatenated = self[:]
+    for arr in args:
+        concatenated += arr
+    return concatenated
+
+
+def slice_method(self: List, start: Optional[int] = None, end: Optional[int] = None) -> List:
+    return self[start:end]
+
+
+def includes_method(self: List, element: Any) -> bool:
+    return element in self
+
+
+def entries_method(self: List) -> enumerate:
+    return enumerate(self)
+
+
+def fill_method(self: List, value: Any, start: int = 0, end: Optional[int] = None) -> List:
+    filled = self[:]
+    if end is None:
+        end = len(self)
+
+    filled[start:end] = [value] * (end - start)
+    return filled
+
+
+def keys_method(self: List) -> range:
+    return range(len(self))
+
+
+def last_index_of_method(self: List, element: Any, from_index: int = -1) -> int:
+    return len(self) - self[from_index::-1].index(element) - 1
+
+
+def sorted_method(self: List, **kwargs) -> List:
+    return sorted(self, **kwargs)
+
+
+def to_string_method(self: List) -> str:
+    return ','.join(flat_method(self, float("Inf")))
