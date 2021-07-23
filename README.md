@@ -8,6 +8,8 @@ The most commonly used methods of iterable objects in JavaScript are: arrays, di
 >>> a.map(lambda x: x * 2)
 [2, 4, 6, 8, 10]
 >>> b = a.map(lambda x: x * 2)
+>>> a
+[1, 2, 3, 4, 5]
 >>> b
 [2, 4, 6, 8, 10]
 >>> nested = [1, 2, [3, [4, 5]]]
