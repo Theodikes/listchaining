@@ -9,6 +9,7 @@ setuptools.setup(
     author="Theodike",
     author_email="gvedichi@gmail.com",
     description="Implementing standard JavaScript iterable objects methods for python iterable objects",
+    keywords=["chaining", "list methods", "array methods", "js", "javascript"],
     long_description=github_readme,
     long_description_content_type="text/markdown",
     url="https://github.com/Theodikes/jsmethods",
