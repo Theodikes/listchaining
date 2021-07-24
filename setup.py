@@ -5,7 +5,7 @@ with open("README.md", "r") as readme_file:
 
 setuptools.setup(
     name="jsmethods",
-    version="0.1.0",
+    version="1.0.0",
     author="Theodike",
     author_email="gvedichi@gmail.com",
     description="Implementing standard JavaScript iterable objects methods for python iterable objects",
