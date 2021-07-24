@@ -1,6 +1,6 @@
 ## Methods for iterable JavaScript objects in Python
 
-The most commonly used methods of Javascript arrays and chaining in Python.
+The most commonly used methods of Javascript arrays and chaining in Python - just import the module!
 
 ```python
 >>> import jsmethods
