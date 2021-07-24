@@ -1,9 +1,7 @@
 import functools
-from typing import Callable, List, Any, Optional, Union, cast
+from typing import Callable, List, Any, Optional, Union
 
 from .utils import get_function_positional_arguments_count
-
-inf = cast(int, float("inf"))
 
 
 def map_method(self: List, function: Callable) -> List:
@@ -152,7 +150,7 @@ def every_method(self: List, function: Callable) -> bool:
     return True
 
 
-def flat_method(self: List, depth: Union[int, inf] = 1) -> List:
+def flat_method(self: List, depth: Union[int, float] = 1) -> List:
     flatten = []
 
     def flat(arr, flat_depth):
@@ -241,3 +239,15 @@ def sorted_method(self: List, **kwargs) -> List:
 
 def to_string_method(self: List) -> str:
     return ','.join(flat_method(self, float("Inf")))
+
+
+def copy_within_method(self: List, target: int, start: int = 0, end: Optional[int] = None):
+    if end is None:
+        end = len(self)
+
+    copied_segment_length = end - start
+
+    cpy = self.copy()
+    cpy[target:target + copied_segment_length] = self[start:end]
+
+    return cpy
