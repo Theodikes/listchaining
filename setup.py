@@ -1,4 +1,12 @@
 import setuptools
+import os, sys, shutil
+
+if sys.argv[-1] == "publish":
+    here = os.path.abspath(os.path.dirname(__file__))
+    shutil.rmtree(os.path.join(here, "dist"))
+    os.system('python setup.py sdist bdist_wheel')
+    os.system('twine upload --repository pypi dist/*')
+    sys.exit()
 
 with open("README.md", "r") as readme_file:
     github_readme = readme_file.read()
