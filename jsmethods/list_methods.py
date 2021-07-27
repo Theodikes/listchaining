@@ -81,20 +81,14 @@ def find_method(self: List, function: Callable) -> Any:
 def find_index_method(self: List, function: Callable) -> int:
     find_index_function_arguments_count = get_function_positional_arguments_count(function)
 
-    if find_index_function_arguments_count not in (2, 3):
+    if find_index_function_arguments_count not in (1, 2, 3):
         raise ValueError("Invalid number of positional arguments in the 'find_index' function. The passed callback"
                          " function can have three positional arguments: the current element of the array, the index"
                          " of the current element, and the entire array.")
 
-    if find_index_function_arguments_count == 2:
-        for index, element in enumerate(self):
-            if function(element, index):
-                return index
-
-    elif find_index_function_arguments_count == 3:
-        for index, element in enumerate(self):
-            if function(element, index, self):
-                return index
+    for index, element in enumerate(self):
+        if function(*[element, index, self][:find_index_function_arguments_count]):
+            return index
 
     return -1
 
