@@ -85,9 +85,20 @@ def find_index_method(self: List, function: Callable) -> int:
                          " function can have three positional arguments: the current element of the array, the index"
                          " of the current element, and the entire array.")
 
-    for index, element in enumerate(self):
-        if function(*[element, index, self][:find_index_function_arguments_count]):
-            return index
+    if find_index_function_arguments_count == 1:
+        for index, element in enumerate(self):
+            if function(element):
+                return index
+
+    if find_index_function_arguments_count == 2:
+        for index, element in enumerate(self):
+            if function(element, index):
+                return index
+
+    elif find_index_function_arguments_count == 3:
+        for index, element in enumerate(self):
+            if function(element, index, self):
+                return index
 
     return -1
 
