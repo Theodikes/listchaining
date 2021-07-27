@@ -27,7 +27,6 @@ def filter_method(self: List, function: Callable) -> List:
     if filter_function_arguments_count == 1:
         return list(filter(function, self))
     elif filter_function_arguments_count == 2:
-        print("ytest")
         return [el for i, el in enumerate(self) if function(el, i)]
     elif filter_function_arguments_count == 3:
         return [el for i, el in enumerate(self) if function(el, i, self)]
