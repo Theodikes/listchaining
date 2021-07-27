@@ -160,7 +160,7 @@ def flat_method(self: List, depth: Union[int, float] = 1) -> List:
 
     def flat(arr, flat_depth):
         for element in arr:
-            if type(element) is list and flat_depth > 0:
+            if type(element) is list and flat_depth >= 1:
                 flat(element, flat_depth - 1)
             else:
                 flatten.append(element)
