@@ -189,17 +189,38 @@ def reversed_method(self: List) -> List:
 
 
 def reduce_method(self: List, function: Callable, initial_value: Any = None) -> Any:
-    if initial_value:
-        return functools.reduce(function, self, initial_value)
+    reduce_method_function_arguments_count = get_function_positional_arguments_count(function)
 
-    return functools.reduce(function, self)
+    if reduce_method_function_arguments_count not in (2, 3, 4):
+        raise ValueError("Invalid number of positional arguments in 'reduce' function. The passed callback function"
+                         " can have four positional arguments: accumulator, that accumulates the value returned by"
+                         " callback function after visiting next element [required],"
+                         " current element of the array [required],"
+                         " index of the current element [optional],"
+                         " and the entire array [optional].")
+
+    it = iter(self)
+    value = initial_value if initial_value else next(it)
+    start_index = 1 if initial_value else 0
+
+    if reduce_method_function_arguments_count == 2:
+        return functools.reduce(function, it, initial_value)
+
+    elif reduce_method_function_arguments_count == 3:
+        for element, index in zip(it, range(start_index, len(self) - start_index)):
+            value = function(value, element, index)
+
+        return value
+
+    elif reduce_method_function_arguments_count == 4:
+        for element, index in zip(it, range(start_index, len(self) - start_index)):
+            value = function(value, element, index, self)
+
+        return value
 
 
 def reduce_right_method(self: List, function: Callable, initial_value: Any = None) -> Any:
-    if initial_value:
-        return functools.reduce(function, self[::-1], initial_value)
-
-    return functools.reduce(function, self[::-1])
+    return reduce_method(reversed_method(self), function, initial_value=initial_value)
 
 
 def concat_method(self: List, *args: List) -> List:
