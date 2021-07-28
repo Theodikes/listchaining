@@ -252,8 +252,11 @@ def entries_method(self: List) -> list[tuple]:
 
 def fill_method(self: List, value: Any, start: int = 0, end: Optional[int] = None) -> List:
     filled = self[:]
-    if end is None:
+
+    if end is None or end > len(self):
         end = len(self)
+    if start > end:
+        return filled
 
     filled[start:end] = [value] * (end - start)
     return filled
