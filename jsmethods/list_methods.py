@@ -246,8 +246,8 @@ def includes_method(self: List, element: Any) -> bool:
     return element in self
 
 
-def entries_method(self: List) -> enumerate:
-    return enumerate(self)
+def entries_method(self: List) -> zip:
+    return zip(range(len(self)), self)
 
 
 def fill_method(self: List, value: Any, start: int = 0, end: Optional[int] = None) -> List:
