@@ -226,10 +226,15 @@ def reduce_right_method(self: List, function: Callable, initial_value: Any = Non
     return reduce_method(reversed_method(self), function, initial_value=initial_value)
 
 
-def concat_method(self: List, *args: List) -> List:
+def concat_method(self: List, *args: Any, expand_strings: bool = False) -> List:
     concatenated = self[:]
-    for arr in args:
-        concatenated += arr
+    for arg in args:
+        # Expand only iterables, but excluding strings, unless the corresponding flag is set
+        if hasattr(arg,  '__iter__') and (not isinstance(arg, str) or expand_strings):
+            concatenated += arg
+        else:
+            concatenated.append(arg)
+
     return concatenated
 
 
