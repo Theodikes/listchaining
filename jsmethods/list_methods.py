@@ -189,6 +189,9 @@ def reversed_method(self: List) -> List:
 
 
 def reduce_method(self: List, function: Callable, initial_value: Any = None) -> Any:
+    if not self and not initial_value:
+        raise ValueError("Reduce of empty array with no initial value.")
+
     reduce_method_function_arguments_count = get_function_positional_arguments_count(function)
 
     if reduce_method_function_arguments_count not in (2, 3, 4):
