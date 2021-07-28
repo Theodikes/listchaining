@@ -38,6 +38,7 @@ Some methods, due to the peculiarities of Python or the developer's ideas, have 
 - `Array.reverse` -> `list.reversed`, and now this method does not modify the array, but returns an reversed copy
 - `Array.sort` -> `list.sorted`, and now this method does not modify the array, but returns an sorted copy. In addition, the method takes as an argument not a function for comparison, but the standard arguments of the `sorted` built-in function in Python
 - `list.join` has an additional argument that `Array.join` does not have: a boolean parameter `cast_types` indicating whether non-string objects will be cast to string when concatenated, since the standard Python join function will simply throw an error if any of the being objects being merged have non-string type
+- `list.concat`  has an additional argument that `Array.join` does not have: a boolean parameter `expand_strings` indicating if adding a string to the array needs to "expand" it as an array of individual characters or just add it to the array entirely
 - `Array.splice` not added because this method changes the contents of an array in place
 - `list.last_index_of` if the element you are looking for is not in the array, it will throw an error instead of returning -1
 
