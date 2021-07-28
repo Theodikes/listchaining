@@ -200,20 +200,20 @@ def reduce_method(self: List, function: Callable, initial_value: Any = None) -> 
                          " and the entire array [optional].")
 
     it = iter(self)
-    value = initial_value if initial_value else next(it)
-    start_index = 0 if initial_value else 1
+    value = initial_value if initial_value is not None else next(it)
+    start_index = 0 if initial_value is not None else 1
 
     if reduce_method_function_arguments_count == 2:
         return functools.reduce(function, it, initial_value)
 
     elif reduce_method_function_arguments_count == 3:
-        for element, index in zip(it, range(start_index, len(self) - start_index)):
+        for element, index in zip(it, range(start_index, len(self))):
             value = function(value, element, index)
 
         return value
 
     elif reduce_method_function_arguments_count == 4:
-        for element, index in zip(it, range(start_index, len(self) - start_index)):
+        for element, index in zip(it, range(start_index, len(self))):
             value = function(value, element, index, self)
 
         return value
