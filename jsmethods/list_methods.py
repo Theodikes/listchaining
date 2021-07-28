@@ -201,7 +201,7 @@ def reduce_method(self: List, function: Callable, initial_value: Any = None) -> 
 
     it = iter(self)
     value = initial_value if initial_value else next(it)
-    start_index = 1 if initial_value else 0
+    start_index = 0 if initial_value else 1
 
     if reduce_method_function_arguments_count == 2:
         return functools.reduce(function, it, initial_value)
