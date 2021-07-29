@@ -287,8 +287,12 @@ def copy_within_method(self: List, target: int, start: int = 0, end: Optional[in
         end = len(self)
 
     copied_segment_length = end - start
+    end_target = target + copied_segment_length
+    if end_target > len(self):
+        end_target = len(self)
+        end = start + (end_target - target)
 
-    cpy = self.copy()
-    cpy[target:target + copied_segment_length] = self[start:end]
+    copy = self.copy()
+    copy[target:end_target] = self[start:end]
 
-    return cpy
+    return copy
