@@ -279,7 +279,7 @@ def sorted_method(self: List, **kwargs) -> List:
 
 
 def to_string_method(self: List) -> str:
-    return ','.join(flat_method(self, float("Inf")))
+    return ','.join(map(lambda el: str(el), flat_method(self, float("Inf"))))
 
 
 def copy_within_method(self: List, target: int, start: int = 0, end: Optional[int] = None):
