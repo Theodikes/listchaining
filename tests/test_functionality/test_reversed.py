@@ -1,4 +1,4 @@
-import jsmethods
+import listchaining
 from random import randint
 
 

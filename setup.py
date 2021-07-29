@@ -12,15 +12,15 @@ with open("README.md", "r") as readme_file:
     github_readme = readme_file.read()
 
 setuptools.setup(
-    name="jsmethods",
-    version="1.0.18",
+    name="listchaining",
+    version="1.0.0",
     author="Theodike",
     author_email="gvedichi@gmail.com",
-    description="Implementing standard JavaScript iterable objects methods for python iterable objects",
-    keywords=["chaining", "list methods", "array methods", "js", "javascript"],
+    description="List chaining in Python (from JavaScript arrays)",
+    keywords=["chaining", "list chaining", "javascript chaining", "array chaining"],
     long_description=github_readme,
     long_description_content_type="text/markdown",
-    url="https://github.com/Theodikes/jsmethods",
+    url="https://github.com/Theodikes/listchaining",
     install_requires=[],
     test_require=["pytest"],
     packages=setuptools.find_packages(),

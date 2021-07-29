@@ -1,10 +1,10 @@
 import random
 
-import jsmethods
+import listchaining
 
 
 def test_concat_not_modifiyng_self_array():
-    test_array = [14, "str", jsmethods.__file__, (1, 4, 5), 13, "test"]
+    test_array = [14, "str", listchaining.__file__, (1, 4, 5), 13, "test"]
     test_array_copy = test_array.copy()
     test_array.concat([35, 242, 78, 90], [78, "teststring", {'a': 'b'}, 17], [[[15]]])
 

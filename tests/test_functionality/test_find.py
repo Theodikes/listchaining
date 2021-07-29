@@ -1,4 +1,4 @@
-import jsmethods
+import listchaining
 
 
 def test_simple_find():

@@ -1,19 +1,19 @@
-## Methods for iterable JavaScript objects in Python
+## List chaining in Python
 
 The most commonly used methods of Javascript arrays and chaining in Python - just import the module!
 
 ```python
->>> import jsmethods
->>> a = [1, 2, 3, 4, 5]
->>> a.map(lambda x: x * 2)
+>> > import listchaining
+>> > a = [1, 2, 3, 4, 5]
+>> > a.map(lambda x: x * 2)
 [2, 4, 6, 8, 10]
->>> b = a.map(lambda x: x * 2)
->>> a
+>> > b = a.map(lambda x: x * 2)
+>> > a
 [1, 2, 3, 4, 5]
->>> b
+>> > b
 [2, 4, 6, 8, 10]
->>> nested = [1, 2, [3, [4, 5]]]
->>> nested.flat(2).filter(lambda x: x > 2).map(lambda x: x ** 2)
+>> > nested = [1, 2, [3, [4, 5]]]
+>> > nested.flat(2).filter(lambda x: x > 2).map(lambda x: x ** 2)
 [9, 16, 25]
 ```
 

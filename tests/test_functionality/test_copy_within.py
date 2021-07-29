@@ -1,4 +1,4 @@
-import jsmethods
+import listchaining
 
 
 def test_copy_within_simple_array():

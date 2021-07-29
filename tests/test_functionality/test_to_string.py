@@ -1,4 +1,4 @@
-import jsmethods
+import listchaining
 
 
 def test_to_string_simple_array():

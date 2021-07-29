@@ -1,6 +1,6 @@
 import random
 
-import jsmethods
+import listchaining
 
 
 def test_simple_entries():

@@ -2,7 +2,7 @@ import random
 
 import pytest
 
-import jsmethods
+import listchaining
 
 
 def test_simple_reduce():

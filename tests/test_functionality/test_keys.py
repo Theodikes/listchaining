@@ -1,6 +1,6 @@
 import random
 
-import jsmethods
+import listchaining
 
 
 def test_keys_compare_with_list_comprehension():

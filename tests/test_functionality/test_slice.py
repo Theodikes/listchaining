@@ -1,6 +1,6 @@
 import pytest
 
-import jsmethods
+import listchaining
 import random
 
 
