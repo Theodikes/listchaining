@@ -262,8 +262,8 @@ def fill_method(self: List, value: Any, start: int = 0, end: Optional[int] = Non
     return filled
 
 
-def keys_method(self: List) -> range:
-    return range(len(self))
+def keys_method(self: List) -> list:
+    return list(range(len(self)))
 
 
 def last_index_of_method(self: List, element: Any, from_index: int = -1) -> int:
