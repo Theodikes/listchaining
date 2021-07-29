@@ -267,7 +267,10 @@ def keys_method(self: List) -> list:
 
 
 def last_index_of_method(self: List, element: Any, from_index: int = -1) -> int:
-    return len(self) - self[from_index::-1].index(element) - 1
+    if from_index >= 0:
+        return from_index - self[from_index::-1].index(element)
+
+    return len(self) - self[from_index::-1].index(element) + from_index
 
 
 def sorted_method(self: List, **kwargs) -> List:
