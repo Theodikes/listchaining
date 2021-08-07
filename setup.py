@@ -3,7 +3,10 @@ import os, sys, shutil
 
 if sys.argv[-1] == "publish":
     here = os.path.abspath(os.path.dirname(__file__))
-    shutil.rmtree(os.path.join(here, "dist"))
+    try:
+        shutil.rmtree(os.path.join(here, "dist"))
+    except FileNotFoundError:
+        pass
     os.system('python setup.py sdist bdist_wheel')
     os.system('twine upload --repository pypi dist/*')
     sys.exit()
