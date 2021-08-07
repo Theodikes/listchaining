@@ -1,5 +1,5 @@
 import functools
-from typing import Callable, List, Any, Optional, Union
+from typing import Callable, List, Any, Optional, Union, Tuple
 
 from .utils import get_function_positional_arguments_count
 
@@ -246,7 +246,7 @@ def includes_method(self: List, element: Any) -> bool:
     return element in self
 
 
-def entries_method(self: List) -> list[tuple]:
+def entries_method(self: List) -> List[Tuple[int, Any]]:
     return list(zip(range(len(self)), self))
 
 
@@ -262,7 +262,7 @@ def fill_method(self: List, value: Any, start: int = 0, end: Optional[int] = Non
     return filled
 
 
-def keys_method(self: List) -> list:
+def keys_method(self: List) -> List[int]:
     return [*range(len(self))]
 
 
@@ -282,7 +282,7 @@ def to_string_method(self: List) -> str:
     return ','.join(map(lambda el: str(el), flat_method(self, float("Inf"))))
 
 
-def copy_within_method(self: List, target: int, start: int = 0, end: Optional[int] = None):
+def copy_within_method(self: List, target: int, start: int = 0, end: Optional[int] = None) -> List:
     if end is None:
         end = len(self)
 
