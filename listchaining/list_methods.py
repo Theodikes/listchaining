@@ -185,15 +185,7 @@ def join_method(self: List, delimiter: str, cast_types: bool = False) -> str:
 
 
 def reversed_method(self: List) -> List:
-
-    # list.reverse() on an array with few elements (less than five million) works more efficiently than reversing
-    # the array with the built-in slice
-    if len(self) > 5000000:
-        return self[::-1]
-    else:
-        copy = self.copy()
-        copy.reverse()
-        return copy
+    return self[::-1]
 
 
 def reduce_method(self: List, function: Callable, initial_value: Any = None) -> Any:
