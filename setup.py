@@ -8,7 +8,7 @@ if sys.argv[-1] == "publish":
     except FileNotFoundError:
         pass
     os.system('python setup.py sdist bdist_wheel')
-    os.system('twine upload --repository pypi dist/*')
+    os.system('python -m twine upload --repository pypi dist/*')
     sys.exit()
 
 with open("README.md", "r") as readme_file:
@@ -16,7 +16,7 @@ with open("README.md", "r") as readme_file:
 
 setuptools.setup(
     name="listchaining",
-    version="1.0.1",
+    version="1.0.2",
     author="Theodike",
     author_email="gvedichi@gmail.com",
     description="List chaining in Python (from JavaScript arrays)",
