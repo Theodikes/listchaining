@@ -2,7 +2,7 @@ import listchaining
 from random import randint
 from time import time
 from typing import Union
-from .utils import test_several_times
+from .utils import check_result_of_multiple_runs, get_percentage_difference
 
 
 random_array = [randint(53454, 6565656) for _ in range(randint(1000000, 2000000))]
@@ -16,7 +16,7 @@ def get_reversed_method_execution_time(array: list) -> Union[int, float]:
     return reverse_time_result
 
 
-@test_several_times(number_of_runs=20)
+@check_result_of_multiple_runs(number_of_runs=20)
 def test_compare_performance_reversed_method_with_cycle() -> bool:
     reversed_method_execution_time = get_reversed_method_execution_time(random_array)
 
@@ -29,7 +29,7 @@ def test_compare_performance_reversed_method_with_cycle() -> bool:
     return cycle_time > reversed_method_execution_time
 
 
-@test_several_times(number_of_runs=30)
+@check_result_of_multiple_runs(number_of_runs=50)
 def test_compare_performance_reversed_method_with_builtin_reversed() -> bool:
     reversed_method_execution_time = get_reversed_method_execution_time(random_array)
 
@@ -37,10 +37,14 @@ def test_compare_performance_reversed_method_with_builtin_reversed() -> bool:
     _ = list(reversed(random_array))
     builtin_reversed_execution_time = time() - start_time
 
-    return builtin_reversed_execution_time > reversed_method_execution_time
+    is_reversed_method_faster_than_builtin = builtin_reversed_execution_time > reversed_method_execution_time
+    are_reversed_method_speed_and_builtin_reversed_speed_comparable = \
+        get_percentage_difference(reversed_method_execution_time, builtin_reversed_execution_time) < 10
+
+    return is_reversed_method_faster_than_builtin or are_reversed_method_speed_and_builtin_reversed_speed_comparable
 
 
-@test_several_times(number_of_runs=50)
+@check_result_of_multiple_runs(number_of_runs=50)
 def test_compare_performance_reversed_method_with_list_reverse_on_big_array() -> bool:
     reversed_method_execution_time = get_reversed_method_execution_time(random_array)
 
@@ -52,7 +56,7 @@ def test_compare_performance_reversed_method_with_list_reverse_on_big_array() ->
     return list_reverse_execution_time > reversed_method_execution_time
 
 
-@test_several_times(number_of_runs=20)
+@check_result_of_multiple_runs(number_of_runs=20)
 def test_compare_performance_reversed_method_with_list_comprehension() -> bool:
     reversed_method_execution_time = get_reversed_method_execution_time(random_array)
 

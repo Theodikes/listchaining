@@ -4,7 +4,7 @@ import string
 import listchaining
 from time import time
 from typing import Union
-from .utils import get_percentage_difference, test_several_times
+from .utils import get_percentage_difference, check_result_of_multiple_runs
 
 
 def get_keys_method_execution_time(array: list) -> Union[int, float]:
@@ -15,7 +15,7 @@ def get_keys_method_execution_time(array: list) -> Union[int, float]:
     return keys_time_result
 
 
-@test_several_times(number_of_runs=20)
+@check_result_of_multiple_runs(number_of_runs=20)
 def test_compare_keys_performance_with_list_comprehension() -> bool:
     test_array = [89] * 5000000
 
@@ -26,7 +26,7 @@ def test_compare_keys_performance_with_list_comprehension() -> bool:
     return get_keys_method_execution_time(test_array) < comprehension_time_result
 
 
-@test_several_times(number_of_runs=20)
+@check_result_of_multiple_runs(number_of_runs=20)
 def test_compare_keys_performance_with_cycle() -> bool:
     test_array = [random.randint(243, 5445)] * 5000000
 
@@ -39,7 +39,7 @@ def test_compare_keys_performance_with_cycle() -> bool:
     return get_keys_method_execution_time(test_array) < cycle_time_result
 
 
-@test_several_times(number_of_runs=100)
+@check_result_of_multiple_runs(number_of_runs=100)
 def test_compare_keys_performance_to_call_list_function() -> bool:
     test_array = [random.choice(string.ascii_lowercase)] * 1000000
 
