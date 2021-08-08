@@ -270,15 +270,14 @@ def last_index_of_method(self: List, searched_element: Any, from_index: int = -1
     array_len = len(self)
 
     '''
-    If the required element is in the last 30% of the array, then the reverse of the entire array will be
-    disadvantageous in terms of execution speed. Therefore, it makes sense to first check in a regular loop
-    the first 20% of the array from the end, and if there is no element in them (and most often, if the array
-    contains duplicate values, the desired element is found in this part of the array), then reverse the entire array.
+    Since it takes a long time to compare large iterable objects (strings, arrays, etc.), it makes sense to first
+    reverse the main array and search in the built-in list.index method expanded from the end.
     '''
-    if array_len > 100 and from_index == -1:
-        for index in range(array_len - 1, array_len - array_len // 5, -1):
+    if (not hasattr(searched_element, '__iter__') or len(searched_element) < 1000) and from_index < 0:
+        for index in range(array_len + from_index, -1, -1):
             if self[index] == searched_element:
                 return index
+        return -1
 
     try:
         if from_index >= 0:
