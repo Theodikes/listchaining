@@ -54,7 +54,7 @@ def test_last_index_with_positive_from_index_parameter_out_array_bounds():
 
 def test_last_index_without_searched_value():
     test_array = [*range(2, 10)]
-    result_error_string = "last_index_of_method() missing 1 required positional argument: 'element'"
+    result_error_string = "last_index_of_method() missing 1 required positional argument: 'searched_element'"
 
     with pytest.raises(TypeError) as error_info:
         test_array.last_index_of()
