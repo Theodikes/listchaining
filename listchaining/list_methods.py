@@ -266,13 +266,26 @@ def keys_method(self: List) -> List[int]:
     return [*range(len(self))]
 
 
-def last_index_of_method(self: List, element: Any, from_index: int = -1) -> int:
+def last_index_of_method(self: List, searched_element: Any, from_index: int = -1) -> int:
+    array_len = len(self)
+
+    '''
+    If the required element is in the last 30% of the array, then the reverse of the entire array will be
+    disadvantageous in terms of execution speed. Therefore, it makes sense to first check in a regular loop
+    the first 20% of the array from the end, and if there is no element in them (and most often, if the array
+    contains duplicate values, the desired element is found in this part of the array), then reverse the entire array.
+    '''
+    if array_len > 100 and from_index == -1:
+        for index in range(array_len - 1, array_len - array_len // 5, -1):
+            if self[index] == searched_element:
+                return index
+
     try:
         if from_index >= 0:
-            from_index = min(from_index, len(self) - 1)
-            return from_index - self[from_index::-1].index(element)
+            from_index = min(from_index, array_len - 1)
+            return from_index - self[from_index::-1].index(searched_element)
 
-        return len(self) - self[from_index::-1].index(element) + from_index
+        return array_len - self[from_index::-1].index(searched_element) + from_index
 
     except ValueError:
         return -1
