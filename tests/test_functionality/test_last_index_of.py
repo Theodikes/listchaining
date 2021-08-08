@@ -29,24 +29,18 @@ def test_last_index_with_positive_from_index_parameter():
 def test_last_index_without_searched_element():
     test_array = [56, 73, 14, 135, 94, 82, 40, 38, 11, 58]
     searched_value = 27
-    result_error_string = f"{searched_value} is not in list"
+    result = -1
 
-    with pytest.raises(ValueError) as error_info:
-        test_array.last_index_of(searched_value)
-
-    assert result_error_string in str(error_info.value)
+    assert result == test_array.last_index_of(searched_value)
 
 
 def test_last_index_with_negative_from_index_parameter_out_array_bounds():
     test_array = [2, 4, 904, "test", 13, "test", 76, 11]
     searched_value = "test"
     from_index = -10000
-    result_error_string = f"'{searched_value}' is not in list"
+    result = -1
 
-    with pytest.raises(ValueError) as error_info:
-        test_array.last_index_of(searched_value, from_index)
-
-    assert result_error_string in str(error_info.value)
+    assert result == test_array.last_index_of(searched_value, from_index)
 
 
 def test_last_index_with_positive_from_index_parameter_out_array_bounds():
