@@ -273,7 +273,9 @@ def last_index_of_method(self: List, searched_element: Any, from_index: int = -1
     Since it takes a long time to compare large iterable objects (strings, arrays, etc.), it makes sense to first
     reverse the main array and search in the built-in list.index method expanded from the end.
     '''
-    if (not hasattr(searched_element, '__iter__') or len(searched_element) < 1000) and from_index < 0:
+    if(not hasattr(searched_element, '__len__') or
+       (type(searched_element) != 'type' and len(searched_element) < 1000)) and from_index < 0:
+
         for index in range(array_len + from_index, -1, -1):
             if self[index] == searched_element:
                 return index
