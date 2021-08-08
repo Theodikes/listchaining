@@ -16,7 +16,7 @@ with open("README.md", "r") as readme_file:
 
 setuptools.setup(
     name="listchaining",
-    version="1.0.8",
+    version="1.0.9",
     author="Theodike",
     author_email="gvedichi@gmail.com",
     description="List chaining in Python (from JavaScript arrays)",
