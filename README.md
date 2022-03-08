@@ -45,3 +45,9 @@ Some methods, due to the peculiarities of Python or the developer's ideas, have 
 
 
 
+#### Type hints
+
+Copy `builtins.pyi` file from `stubs` folder in root of this project to `typeshed/stdlib` folder with replacement. For example, if you are using PyCharm on Windows, go to this path: `C:\Program Files\JetBrains\your_pycharm_version\plugins\python\helpers\typeshed\stdlib`
+
+
+
