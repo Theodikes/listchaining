@@ -16,7 +16,7 @@ with open("README.md", "r") as readme_file:
 
 setuptools.setup(
     name="listchaining",
-    version="1.0.9",
+    version="1.0.10",
     author="Theodike",
     author_email="gvedichi@gmail.com",
     description="List chaining in Python (from JavaScript arrays)",
@@ -33,6 +33,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         "License :: OSI Approved :: MIT License",
