@@ -172,8 +172,8 @@ def flat_method(self: List, depth: Union[int, float] = 1) -> List:
 
 def join_method(self: List, delimiter: str, cast_types: bool = False) -> str:
     """
-    Since JavaScript has automatic typecasting to a string and it usually works correctly, but Python does not have such
-    functionality, I decided to add an additional parameter that determines whether all array elements will be cast
+    Since JavaScript has automatic typecasting to a string, and it usually works correctly, but Python does not have
+    such functionality, I decided to add a parameter that determines whether all array elements will be cast
     to a string type when concatenated.
     """
 
